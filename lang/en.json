@@ -1,10 +1,12 @@
 {
   "meta": {
-    "title": "ScanKasir - Offline Android POS"
+    "title": "ScanKasir - Offline Android POS",
+    "langName": "English"
   },
 
   "navbar": {
     "brand": "ScanKasir",
+    "features": "Features",
     "download": "Download"
   },
 

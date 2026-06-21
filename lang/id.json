@@ -1,10 +1,12 @@
 {
   "meta": {
-    "title": "ScanKasir - Kasir Android Offline untuk UMKM"
+    "title": "ScanKasir - Kasir Android Offline untuk UMKM",
+    "langName": "Indonesia"
   },
 
   "navbar": {
     "brand": "ScanKasir",
+    "features": "Fitur",
     "download": "Unduh"
   },
 
