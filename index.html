@@ -2,18 +2,22 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScanKasir - Kasir Android Offline untuk UMKM</title>
 
-<title>ScanKasir</title>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
-    --blue1:#108EE9;
-    --blue2:#00AEEF;
-    --blue3:#4FC3F7;
+    --primary:#108EE9;
+    --primary2:#00AEEF;
+    --primary3:#4FC3F7;
+    --dark:#0F172A;
+    --gray:#64748B;
+    --bg:#F7FBFF;
 }
 
 *{
@@ -22,9 +26,14 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    font-family:Inter,sans-serif;
-    background:#f7fbff;
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--dark);
 }
 
 .container{
@@ -33,17 +42,24 @@ body{
     margin:auto;
 }
 
+section{
+    padding:90px 0;
+}
+
+/* NAVBAR */
 nav{
     position:fixed;
     top:0;
+    left:0;
     width:100%;
     z-index:999;
-    background:white;
-    box-shadow:0 2px 10px rgba(0,0,0,.05);
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(8px);
+    box-shadow:0 2px 14px rgba(15,23,42,.06);
 }
 
 .nav-inner{
-    height:70px;
+    height:72px;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -51,81 +67,127 @@ nav{
 
 .brand{
     font-weight:800;
-    font-size:24px;
-    color:#108EE9;
+    font-size:22px;
+    color:var(--primary);
+    letter-spacing:-.5px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:24px;
+}
+
+.nav-links a{
+    color:var(--dark);
+    text-decoration:none;
+    font-weight:500;
+    font-size:15px;
 }
 
 .lang-switch{
     display:flex;
-    gap:10px;
+    gap:6px;
+    background:#EEF4FB;
+    padding:4px;
+    border-radius:10px;
 }
 
 .lang-switch button{
     border:none;
-    padding:8px 14px;
+    background:transparent;
+    padding:7px 12px;
     cursor:pointer;
     border-radius:8px;
+    font-weight:600;
+    font-size:13px;
+    color:var(--gray);
+    transition:.2s;
+    text-transform:uppercase;
 }
 
-.hero{
-    padding-top:120px;
-    min-height:100vh;
-
-    background:
-    linear-gradient(
-    135deg,
-    var(--blue1),
-    var(--blue2),
-    var(--blue3));
-
+.lang-switch button.active{
+    background:var(--primary);
     color:white;
+}
+
+.nav-download{
+    background:var(--primary);
+    color:white;
+    padding:10px 20px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:14px;
+    white-space:nowrap;
+}
+
+/* HERO */
+.hero{
+    background:linear-gradient(135deg,var(--primary),var(--primary2),var(--primary3));
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    color:white;
+    padding-top:90px;
 }
 
 .hero-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:50px;
+    gap:60px;
     align-items:center;
-}
-
-.hero img{
-    width:100%;
-    border-radius:24px;
 }
 
 .badge{
     display:inline-block;
+    background:rgba(255,255,255,.2);
     padding:10px 18px;
     border-radius:50px;
-    background:rgba(255,255,255,.15);
     margin-bottom:20px;
+    font-size:14px;
+    font-weight:600;
+    min-height:20px;
 }
 
 .hero h1{
-    font-size:56px;
+    font-size:54px;
+    line-height:1.15;
     margin-bottom:20px;
+    font-weight:800;
+    min-height:1em;
 }
 
 .hero p{
-    line-height:1.8;
-    font-size:20px;
+    font-size:19px;
+    line-height:1.7;
+    margin-bottom:32px;
+    opacity:.95;
 }
 
-.buttons{
-    margin-top:30px;
+.hero-buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
 }
 
 .btn{
-    display:inline-block;
-    text-decoration:none;
-    padding:14px 24px;
+    padding:15px 28px;
     border-radius:12px;
-    margin-right:10px;
+    text-decoration:none;
+    font-weight:700;
+    display:inline-block;
+    transition:.2s;
 }
 
 .btn-primary{
     background:white;
-    color:#108EE9;
+    color:var(--primary);
+}
+
+.btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
 }
 
 .btn-secondary{
@@ -133,15 +195,38 @@ nav{
     color:white;
 }
 
-section{
-    padding:90px 0;
+.btn-secondary:hover{
+    background:rgba(255,255,255,.12);
 }
 
-.title{
+.hero-image-wrap img{
+    width:100%;
+    border-radius:24px;
+    box-shadow:0 25px 60px rgba(0,0,0,.25);
+    display:block;
+}
+
+/* SECTION TITLES */
+.section-title{
     text-align:center;
-    margin-bottom:50px;
+    margin-bottom:60px;
 }
 
+.section-title h2{
+    font-size:40px;
+    margin-bottom:15px;
+    font-weight:800;
+}
+
+.section-title p{
+    color:var(--gray);
+    max-width:700px;
+    margin:auto;
+    font-size:17px;
+    line-height:1.7;
+}
+
+/* FEATURES */
 .features-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -150,157 +235,280 @@ section{
 
 .card{
     background:white;
-    padding:25px;
     border-radius:20px;
-    box-shadow:0 10px 20px rgba(0,0,0,.05);
+    padding:28px;
+    box-shadow:0 8px 25px rgba(15,23,42,.05);
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 36px rgba(15,23,42,.09);
 }
 
 .card .icon{
     font-size:30px;
-    margin-bottom:10px;
+    margin-bottom:14px;
 }
 
-.screenshot img{
+.card h3{
+    margin-bottom:10px;
+    font-size:18px;
+}
+
+.card p{
+    color:var(--gray);
+    font-size:15px;
+    line-height:1.6;
+}
+
+/* SCREENSHOT */
+.screenshot-wrap img{
     width:100%;
     border-radius:24px;
+    box-shadow:0 25px 60px rgba(15,23,42,.12);
+    display:block;
+}
+
+/* CTA */
+.cta-section{
+    padding:90px 0;
 }
 
 .cta{
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
+    color:white;
     text-align:center;
-    background:white;
     border-radius:30px;
-    padding:60px;
+    padding:70px 40px;
 }
 
+.cta h2{
+    font-size:42px;
+    margin-bottom:18px;
+    font-weight:800;
+}
+
+.cta p{
+    max-width:650px;
+    margin:auto;
+    margin-bottom:30px;
+    font-size:17px;
+    opacity:.95;
+    line-height:1.7;
+}
+
+/* FOOTER */
 footer{
+    background:var(--dark);
+    color:white;
     text-align:center;
-    padding:30px;
+    padding:35px;
+}
+
+footer p{
+    opacity:.8;
+    font-size:14px;
+}
+
+/* LOADER (sementara JSON masih dimuat) */
+.page-loading{
+    opacity:0;
+}
+
+.page-ready{
+    opacity:1;
+    transition:opacity .25s ease;
 }
 
 @media(max-width:900px){
 
-.hero-grid{
-    grid-template-columns:1fr;
-}
+    .hero-grid{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
 
-.hero h1{
-    font-size:40px;
-}
+    .hero-buttons{
+        justify-content:center;
+    }
 
+    .hero{
+        padding-top:110px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .section-title h2{
+        font-size:30px;
+    }
+
+    .nav-links{
+        gap:10px;
+    }
+
+    .nav-links > a{
+        display:none;
+    }
+
+    .cta h2{
+        font-size:32px;
+    }
+
+    .cta{
+        padding:50px 24px;
+    }
 }
 
 </style>
 </head>
-
-<body>
+<body class="page-loading">
 
 <nav>
 <div class="container nav-inner">
 
-<div class="brand" id="brand"></div>
+    <div class="brand" id="brand">ScanKasir</div>
 
-<div class="lang-switch">
-<button onclick="loadLanguage('id')">ID</button>
-<button onclick="loadLanguage('en')">EN</button>
-</div>
+    <div class="nav-links">
+        <a href="#features" id="navFeatures">Fitur</a>
+        <div class="lang-switch" id="langSwitch"><!-- tombol bahasa digenerate otomatis dari config.languages --></div>
+        <a href="#" class="nav-download" id="navDownload">Unduh</a>
+    </div>
 
 </div>
 </nav>
 
 <section class="hero">
-
 <div class="container">
-
 <div class="hero-grid">
 
-<div>
+    <div>
+        <span class="badge" id="heroBadge"></span>
+        <h1 id="heroTitle"></h1>
+        <p id="heroDesc"></p>
 
-<div class="badge" id="heroBadge"></div>
+        <div class="hero-buttons">
+            <a href="#" class="btn btn-primary" id="heroBtn1"></a>
+            <a href="#features" class="btn btn-secondary" id="heroBtn2"></a>
+        </div>
+    </div>
 
-<h1 id="heroTitle"></h1>
-
-<p id="heroDesc"></p>
-
-<div class="buttons">
-<a href="#" class="btn btn-primary" id="heroBtn1"></a>
-<a href="#features" class="btn btn-secondary" id="heroBtn2"></a>
-</div>
-
-</div>
-
-<div>
-<img id="heroImage">
-</div>
+    <div class="hero-image-wrap">
+        <img id="heroImage" alt="ScanKasir App">
+    </div>
 
 </div>
-
 </div>
-
 </section>
 
 <section id="features">
-
 <div class="container">
 
-<div class="title">
-<h2 id="featuresTitle"></h2>
-<p id="featuresSubtitle"></p>
+    <div class="section-title">
+        <h2 id="featuresTitle"></h2>
+        <p id="featuresSubtitle"></p>
+    </div>
+
+    <div id="featureContainer" class="features-grid"></div>
+
 </div>
-
-<div id="featureContainer" class="features-grid"></div>
-
-</div>
-
 </section>
 
 <section class="screenshot">
-
 <div class="container">
 
-<div class="title">
-<h2 id="screenTitle"></h2>
-<p id="screenSubtitle"></p>
+    <div class="section-title">
+        <h2 id="screenTitle"></h2>
+        <p id="screenSubtitle"></p>
+    </div>
+
+    <div class="screenshot-wrap">
+        <img id="screenImage" alt="ScanKasir Screenshot">
+    </div>
+
 </div>
-
-<img id="screenImage">
-
-</div>
-
 </section>
 
-<section>
-
+<section class="cta-section">
 <div class="container">
-
 <div class="cta">
 
-<h2 id="ctaTitle"></h2>
-<p id="ctaDesc"></p>
-
-<br>
-
-<a href="#" class="btn btn-primary" id="ctaBtn"></a>
+    <h2 id="ctaTitle"></h2>
+    <p id="ctaDesc"></p>
+    <a href="#" class="btn btn-primary" id="ctaBtn"></a>
 
 </div>
-
 </div>
-
 </section>
 
-<footer id="footerText"></footer>
+<footer>
+<p id="footerText"></p>
+</footer>
 
 <script>
 
-async function loadLanguage(lang){
+/*
+ * KONFIGURASI BAHASA
+ * -------------------
+ * Untuk menambah bahasa baru:
+ *   1. Buat file lang/xx.json (copy dari lang/en.json, terjemahkan isinya)
+ *   2. Tambahkan satu baris di array di bawah ini, contoh:
+ *        { code: 'xx', label: 'XX' }
+ * Tidak perlu mengubah bagian lain dari script ini.
+ */
+const config = {
+    languages: [
+        { code: 'id', label: 'ID' },
+        { code: 'en', label: 'EN' }
+        // { code: 'ms', label: 'MS' },  <-- contoh menambah Bahasa Melayu
+    ],
+    defaultLang: 'id',
+    storageKey: 'scankasir_lang'
+};
+
+let currentLang = config.defaultLang;
+const cache = {};
+
+function buildLangSwitch(){
+    const wrap = document.getElementById('langSwitch');
+    wrap.innerHTML = '';
+
+    config.languages.forEach(lng => {
+        const btn = document.createElement('button');
+        btn.id = 'btn-' + lng.code;
+        btn.textContent = lng.label;
+        btn.addEventListener('click', () => loadLanguage(lng.code));
+        wrap.appendChild(btn);
+    });
+}
+
+function setActiveButton(lang){
+    config.languages.forEach(lng => {
+        const btn = document.getElementById('btn-' + lng.code);
+        if(btn) btn.classList.toggle('active', lng.code === lang);
+    });
+}
+
+async function fetchLangData(lang){
+    if(cache[lang]) return cache[lang];
 
     const response = await fetch(`lang/${lang}.json`);
-    const data = await response.json();
+    if(!response.ok) throw new Error('Gagal memuat lang/' + lang + '.json');
 
-    localStorage.setItem('lang',lang);
+    const data = await response.json();
+    cache[lang] = data;
+    return data;
+}
+
+function renderLanguage(data){
 
     document.title = data.meta.title;
+    document.documentElement.lang = currentLang;
 
     brand.textContent = data.navbar.brand;
+    navFeatures.textContent = data.navbar.features;
+    navDownload.textContent = data.navbar.download;
 
     heroBadge.textContent = data.hero.badge;
     heroTitle.textContent = data.hero.title;
@@ -312,16 +520,15 @@ async function loadLanguage(lang){
     featuresTitle.textContent = data.features.title;
     featuresSubtitle.textContent = data.features.subtitle;
 
-    featureContainer.innerHTML='';
-
-    data.features.items.forEach(item=>{
-
-        featureContainer.innerHTML += `
-        <div class="card">
+    featureContainer.innerHTML = '';
+    data.features.items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
             <div class="icon">${item.icon}</div>
             <h3>${item.title}</h3>
-            <p>${item.description}</p>
-        </div>`;
+            <p>${item.description}</p>`;
+        featureContainer.appendChild(card);
     });
 
     screenTitle.textContent = data.screenshots.title;
@@ -332,18 +539,54 @@ async function loadLanguage(lang){
     ctaDesc.textContent = data.cta.description;
     ctaBtn.textContent = data.cta.button;
 
-    footerText.textContent =
-        data.footer.copyright;
+    footerText.textContent = data.footer.copyright;
 }
 
-const savedLang = localStorage.getItem('lang');
+async function loadLanguage(lang){
+    try{
+        const data = await fetchLangData(lang);
+        currentLang = lang;
+        renderLanguage(data);
+        setActiveButton(lang);
 
-if(savedLang){
-    loadLanguage(savedLang);
-}else{
-    const browserLang = navigator.language;
-    loadLanguage(browserLang.startsWith('id') ? 'id' : 'en');
+        try{
+            localStorage.setItem(config.storageKey, lang);
+        }catch(e){
+            /* localStorage tidak tersedia (mis. mode privat), abaikan */
+        }
+
+        document.body.classList.remove('page-loading');
+        document.body.classList.add('page-ready');
+
+    }catch(err){
+        console.error(err);
+
+        // Fallback: kalau bahasa yang diminta gagal dimuat dan bukan defaultLang,
+        // coba muat defaultLang sebagai cadangan.
+        if(lang !== config.defaultLang){
+            loadLanguage(config.defaultLang);
+        }
+    }
 }
+
+function detectInitialLanguage(){
+    let saved = null;
+    try{
+        saved = localStorage.getItem(config.storageKey);
+    }catch(e){
+        saved = null;
+    }
+
+    const validCodes = config.languages.map(l => l.code);
+
+    if(saved && validCodes.includes(saved)) return saved;
+
+    const browserLang = (navigator.language || config.defaultLang).slice(0,2).toLowerCase();
+    return validCodes.includes(browserLang) ? browserLang : config.defaultLang;
+}
+
+buildLangSwitch();
+loadLanguage(detectInitialLanguage());
 
 </script>
 
