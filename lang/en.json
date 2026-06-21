@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "title": "ScanKasir - Offline Android POS"
+  },
+
+  "navbar": {
+    "brand": "ScanKasir",
+    "download": "Download"
+  },
+
+  "hero": {
+    "badge": "Offline Android POS",
+    "title": "Manage Your Store Faster with ScanKasir",
+    "description": "Modern Android POS for retail stores, minimarkets, kiosks and small businesses. Works even when internet access is unavailable.",
+    "button_primary": "Start Free",
+    "button_secondary": "Explore Features",
+    "image": "https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1200&q=80"
+  },
+
+  "features": {
+    "title": "Key Features",
+    "subtitle": "Built for modern businesses",
+
+    "items": [
+      {
+        "icon": "⚡",
+        "title": "Fast Transactions",
+        "description": "Scan barcodes or select products instantly."
+      },
+      {
+        "icon": "📶",
+        "title": "Offline First",
+        "description": "Continue selling without internet."
+      },
+      {
+        "icon": "☁️",
+        "title": "Google Drive Backup",
+        "description": "Automatic backup and restore."
+      },
+      {
+        "icon": "📈",
+        "title": "Profit Analysis",
+        "description": "Track profit based on product costs."
+      },
+      {
+        "icon": "🖨️",
+        "title": "Thermal Printer Support",
+        "description": "Bluetooth, USB and network printing."
+      },
+      {
+        "icon": "💳",
+        "title": "QR Payments",
+        "description": "Support modern digital payments."
+      }
+    ]
+  },
+
+  "screenshots": {
+    "title": "Designed for Modern Retail",
+    "subtitle": "Easy to use on smartphones and tablets",
+    "image": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80"
+  },
+
+  "cta": {
+    "title": "Start Using ScanKasir Today",
+    "description": "Manage sales, inventory and profits in one application.",
+    "button": "Download Now"
+  },
+
+  "footer": {
+    "copyright": "© 2026 ScanKasir • PT Merdekasoft Teknologi Indonesia"
+  }
+}
