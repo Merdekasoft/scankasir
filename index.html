@@ -2,24 +2,18 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>ScanKasir - Kasir Android Offline untuk UMKM</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>ScanKasir</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
-    --primary:#108EE9;
-    --primary2:#00AEEF;
-    --primary3:#4FC3F7;
-    --dark:#0F172A;
-    --gray:#64748B;
-    --bg:#F7FBFF;
+    --blue1:#108EE9;
+    --blue2:#00AEEF;
+    --blue3:#4FC3F7;
 }
 
 *{
@@ -29,9 +23,8 @@
 }
 
 body{
-    font-family:'Inter',sans-serif;
-    background:var(--bg);
-    color:var(--dark);
+    font-family:Inter,sans-serif;
+    background:#f7fbff;
 }
 
 .container{
@@ -40,67 +33,99 @@ body{
     margin:auto;
 }
 
-section{
-    padding:90px 0;
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:999;
+    background:white;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.nav-inner{
+    height:70px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.brand{
+    font-weight:800;
+    font-size:24px;
+    color:#108EE9;
+}
+
+.lang-switch{
+    display:flex;
+    gap:10px;
+}
+
+.lang-switch button{
+    border:none;
+    padding:8px 14px;
+    cursor:pointer;
+    border-radius:8px;
 }
 
 .hero{
-    background:linear-gradient(
-        135deg,
-        var(--primary),
-        var(--primary2),
-        var(--primary3)
-    );
-
+    padding-top:120px;
     min-height:100vh;
-    display:flex;
-    align-items:center;
+
+    background:
+    linear-gradient(
+    135deg,
+    var(--blue1),
+    var(--blue2),
+    var(--blue3));
+
     color:white;
 }
 
 .hero-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:60px;
+    gap:50px;
     align-items:center;
+}
+
+.hero img{
+    width:100%;
+    border-radius:24px;
 }
 
 .badge{
     display:inline-block;
-    background:rgba(255,255,255,.2);
     padding:10px 18px;
     border-radius:50px;
+    background:rgba(255,255,255,.15);
     margin-bottom:20px;
 }
 
 .hero h1{
-    font-size:58px;
-    line-height:1.1;
+    font-size:56px;
     margin-bottom:20px;
 }
 
 .hero p{
+    line-height:1.8;
     font-size:20px;
-    line-height:1.7;
-    margin-bottom:30px;
 }
 
-.hero-buttons{
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
+.buttons{
+    margin-top:30px;
 }
 
 .btn{
-    padding:15px 28px;
-    border-radius:12px;
+    display:inline-block;
     text-decoration:none;
-    font-weight:700;
+    padding:14px 24px;
+    border-radius:12px;
+    margin-right:10px;
 }
 
 .btn-primary{
     background:white;
-    color:var(--primary);
+    color:#108EE9;
 }
 
 .btn-secondary{
@@ -108,29 +133,16 @@ section{
     color:white;
 }
 
-.hero img{
-    width:100%;
-    border-radius:24px;
-    box-shadow:0 25px 60px rgba(0,0,0,.25);
+section{
+    padding:90px 0;
 }
 
-.section-title{
+.title{
     text-align:center;
-    margin-bottom:60px;
+    margin-bottom:50px;
 }
 
-.section-title h2{
-    font-size:42px;
-    margin-bottom:15px;
-}
-
-.section-title p{
-    color:var(--gray);
-    max-width:700px;
-    margin:auto;
-}
-
-.features{
+.features-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:25px;
@@ -138,126 +150,62 @@ section{
 
 .card{
     background:white;
-    border-radius:20px;
     padding:25px;
-    box-shadow:0 8px 25px rgba(0,0,0,.05);
+    border-radius:20px;
+    box-shadow:0 10px 20px rgba(0,0,0,.05);
 }
 
-.card h3{
-    margin-bottom:12px;
+.card .icon{
+    font-size:30px;
+    margin-bottom:10px;
 }
 
-.card p{
-    color:var(--gray);
-}
-
-.two-col{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:60px;
-    align-items:center;
-}
-
-.two-col img{
+.screenshot img{
     width:100%;
-    border-radius:20px;
-}
-
-.checklist{
-    list-style:none;
-}
-
-.checklist li{
-    margin-bottom:15px;
-    font-size:18px;
-}
-
-.checklist li::before{
-    content:"✓ ";
-    color:var(--primary);
-    font-weight:bold;
-}
-
-.stats{
-    background:white;
-}
-
-.stats-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
-}
-
-.stat{
-    text-align:center;
-    padding:25px;
-}
-
-.stat h3{
-    color:var(--primary);
-    font-size:36px;
+    border-radius:24px;
 }
 
 .cta{
-    background:linear-gradient(
-        135deg,
-        var(--primary),
-        var(--primary2)
-    );
-
-    color:white;
     text-align:center;
+    background:white;
     border-radius:30px;
-    padding:70px 40px;
-}
-
-.cta h2{
-    font-size:46px;
-    margin-bottom:20px;
-}
-
-.cta p{
-    max-width:700px;
-    margin:auto;
-    margin-bottom:30px;
+    padding:60px;
 }
 
 footer{
-    background:#0F172A;
-    color:white;
     text-align:center;
-    padding:35px;
-    margin-top:80px;
+    padding:30px;
 }
 
 @media(max-width:900px){
 
-.hero-grid,
-.two-col{
+.hero-grid{
     grid-template-columns:1fr;
 }
 
-.hero{
-    padding:100px 0;
-}
-
 .hero h1{
-    font-size:42px;
-}
-
-.stats-grid{
-    grid-template-columns:1fr 1fr;
-}
-
-.section-title h2{
-    font-size:34px;
+    font-size:40px;
 }
 
 }
 
 </style>
 </head>
+
 <body>
+
+<nav>
+<div class="container nav-inner">
+
+<div class="brand" id="brand"></div>
+
+<div class="lang-switch">
+<button onclick="loadLanguage('id')">ID</button>
+<button onclick="loadLanguage('en')">EN</button>
+</div>
+
+</div>
+</nav>
 
 <section class="hero">
 
@@ -267,41 +215,21 @@ footer{
 
 <div>
 
-<span class="badge">
-Kasir Android Offline
-</span>
+<div class="badge" id="heroBadge"></div>
 
-<h1>
-Kelola Toko Lebih Cepat dengan ScanKasir
-</h1>
+<h1 id="heroTitle"></h1>
 
-<p>
-Aplikasi kasir modern untuk UMKM, toko retail,
-warung, minimarket, dan usaha dagang.
-Tetap berjalan meskipun internet terputus.
-Mudah digunakan dan siap berkembang bersama bisnis Anda.
-</p>
+<p id="heroDesc"></p>
 
-<div class="hero-buttons">
-
-<a href="#" class="btn btn-primary">
-Mulai Gratis
-</a>
-
-<a href="#" class="btn btn-secondary">
-Lihat Demo
-</a>
-
+<div class="buttons">
+<a href="#" class="btn btn-primary" id="heroBtn1"></a>
+<a href="#features" class="btn btn-secondary" id="heroBtn2"></a>
 </div>
 
 </div>
 
 <div>
-
-<img
-src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1200&q=80"
-alt="Kasir Modern">
-
+<img id="heroImage">
 </div>
 
 </div>
@@ -310,186 +238,31 @@ alt="Kasir Modern">
 
 </section>
 
-<section>
+<section id="features">
 
 <div class="container">
 
-<div class="section-title">
-
-<h2>Mengelola Toko Tidak Harus Rumit</h2>
-
-<p>
-ScanKasir membantu Anda mencatat transaksi,
-mengelola produk, memantau keuntungan,
-dan menjaga data bisnis tetap aman.
-</p>
-
+<div class="title">
+<h2 id="featuresTitle"></h2>
+<p id="featuresSubtitle"></p>
 </div>
 
-<div class="features">
-
-<div class="card">
-<h3>⚡ Transaksi Cepat</h3>
-<p>
-Scan barcode atau pilih produk langsung dari katalog.
-</p>
-</div>
-
-<div class="card">
-<h3>📶 Offline First</h3>
-<p>
-Tetap bisa digunakan walaupun internet mati.
-</p>
-</div>
-
-<div class="card">
-<h3>☁️ Backup Otomatis</h3>
-<p>
-Data tersimpan aman dengan Google Drive.
-</p>
-</div>
-
-<div class="card">
-<h3>📈 Analisis Profit</h3>
-<p>
-Pantau keuntungan berdasarkan HPP produk.
-</p>
-</div>
-
-<div class="card">
-<h3>🖨 Thermal Printer</h3>
-<p>
-Bluetooth, USB, dan LAN/WiFi.
-</p>
-</div>
-
-<div class="card">
-<h3>💳 QRIS</h3>
-<p>
-Mendukung pembayaran digital modern.
-</p>
-</div>
-
-</div>
+<div id="featureContainer" class="features-grid"></div>
 
 </div>
 
 </section>
 
-<section>
+<section class="screenshot">
 
 <div class="container">
 
-<div class="two-col">
-
-<div>
-
-<img
-src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80"
-alt="Tablet POS">
-
+<div class="title">
+<h2 id="screenTitle"></h2>
+<p id="screenSubtitle"></p>
 </div>
 
-<div>
-
-<h2 style="font-size:40px;margin-bottom:25px;">
-Fitur yang Dibutuhkan UMKM
-</h2>
-
-<ul class="checklist">
-
-<li>Scan Barcode Kamera</li>
-<li>Scanner USB dan OTG</li>
-<li>Produk Manual dengan Foto</li>
-<li>Diskon dan Pajak</li>
-<li>Google Sign-In</li>
-<li>Backup Google Drive</li>
-<li>Laporan Penjualan</li>
-<li>Laporan Profit dan HPP</li>
-<li>Hutang Pelanggan</li>
-<li>WhatsApp Billing</li>
-
-</ul>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="stats">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>Dibangun untuk Pertumbuhan Bisnis</h2>
-
-<p>
-Mulai dari warung kecil hingga toko yang berkembang.
-</p>
-
-</div>
-
-<div class="stats-grid">
-
-<div class="stat">
-<h3>Offline</h3>
-<p>Tetap berjalan tanpa internet</p>
-</div>
-
-<div class="stat">
-<h3>Android</h3>
-<p>Smartphone dan Tablet</p>
-</div>
-
-<div class="stat">
-<h3>QRIS</h3>
-<p>Pembayaran Digital</p>
-</div>
-
-<div class="stat">
-<h3>Cloud</h3>
-<p>Backup Google Drive</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section>
-
-<div class="container">
-
-<div class="two-col">
-
-<div>
-
-<h2 style="font-size:40px;margin-bottom:25px;">
-Pantau Kinerja Toko dari Data Nyata
-</h2>
-
-<p style="color:#64748B;font-size:18px;line-height:1.8;">
-Lihat produk terlaris, omzet harian,
-keuntungan berdasarkan HPP,
-dan histori transaksi dalam satu aplikasi.
-</p>
-
-</div>
-
-<div>
-
-<img
-src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
-alt="Dashboard Bisnis">
-
-</div>
-
-</div>
+<img id="screenImage">
 
 </div>
 
@@ -501,18 +274,12 @@ alt="Dashboard Bisnis">
 
 <div class="cta">
 
-<h2>
-Mulai Gunakan ScanKasir Hari Ini
-</h2>
+<h2 id="ctaTitle"></h2>
+<p id="ctaDesc"></p>
 
-<p>
-Aplikasi kasir Android yang sederhana,
-cepat, dan dirancang khusus untuk UMKM Indonesia.
-</p>
+<br>
 
-<a href="#" class="btn btn-primary">
-Unduh ScanKasir
-</a>
+<a href="#" class="btn btn-primary" id="ctaBtn"></a>
 
 </div>
 
@@ -520,9 +287,65 @@ Unduh ScanKasir
 
 </section>
 
-<footer>
-© 2026 ScanKasir • PT Merdekasoft Teknologi Indonesia
-</footer>
+<footer id="footerText"></footer>
+
+<script>
+
+async function loadLanguage(lang){
+
+    const response = await fetch(`lang/${lang}.json`);
+    const data = await response.json();
+
+    localStorage.setItem('lang',lang);
+
+    document.title = data.meta.title;
+
+    brand.textContent = data.navbar.brand;
+
+    heroBadge.textContent = data.hero.badge;
+    heroTitle.textContent = data.hero.title;
+    heroDesc.textContent = data.hero.description;
+    heroBtn1.textContent = data.hero.button_primary;
+    heroBtn2.textContent = data.hero.button_secondary;
+    heroImage.src = data.hero.image;
+
+    featuresTitle.textContent = data.features.title;
+    featuresSubtitle.textContent = data.features.subtitle;
+
+    featureContainer.innerHTML='';
+
+    data.features.items.forEach(item=>{
+
+        featureContainer.innerHTML += `
+        <div class="card">
+            <div class="icon">${item.icon}</div>
+            <h3>${item.title}</h3>
+            <p>${item.description}</p>
+        </div>`;
+    });
+
+    screenTitle.textContent = data.screenshots.title;
+    screenSubtitle.textContent = data.screenshots.subtitle;
+    screenImage.src = data.screenshots.image;
+
+    ctaTitle.textContent = data.cta.title;
+    ctaDesc.textContent = data.cta.description;
+    ctaBtn.textContent = data.cta.button;
+
+    footerText.textContent =
+        data.footer.copyright;
+}
+
+const savedLang = localStorage.getItem('lang');
+
+if(savedLang){
+    loadLanguage(savedLang);
+}else{
+    const browserLang = navigator.language;
+    loadLanguage(browserLang.startsWith('id') ? 'id' : 'en');
+}
+
+</script>
 
 </body>
 </html>
